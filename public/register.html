@@ -1,0 +1,15 @@
+<form action="/auth/register" method="post">
+  <input name="name" placeholder="名前" required><br>
+  <input type="email" name="email" placeholder="メール" required><br>
+  <input type="password" name="password" placeholder="パスワード" required><br>
+  <input name="phone" placeholder="電話番号"><br>
+  <select name="gender">
+    <option value="">性別</option>
+    <option value="male">男性</option>
+    <option value="female">女性</option>
+    <option value="other">その他</option>
+  </select><br>
+  <input name="age" type="number" placeholder="年齢"><br>
+  <input name="purpose" placeholder="目的 (例: 就職、起業など)"><br>
+  <button type="submit">登録</button>
+</form>
