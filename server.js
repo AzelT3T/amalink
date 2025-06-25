@@ -28,6 +28,22 @@ app.get('/home', async (req, res) => {
   if (!req.session.user) return res.redirect('/auth/login');
 
   const userId = req.session.user.id;
+  const keyword = req.query.q;
+  let jobsQuery = 'SELECT * FROM jobs WHERE is_published = TRUE';
+  let params = [];
+
+  if (keyword) {
+    jobsQuery += ` AND (
+      title LIKE ? OR
+      description LIKE ? OR
+      location LIKE ? OR
+      salary LIKE ?
+    )`;
+    const likeKeyword = `%${keyword}%`;
+    params.push(likeKeyword, likeKeyword, likeKeyword, likeKeyword);
+  }
+
+  jobsQuery += ' ORDER BY created_at DESC';
 
   try {
     const [companies] = await pool.query(
@@ -35,11 +51,8 @@ app.get('/home', async (req, res) => {
       [userId]
     );
 
-    const [jobs] = await pool.query(
-      'SELECT * FROM jobs WHERE is_published = TRUE ORDER BY created_at DESC'
-    );
+    const [jobs] = await pool.query(jobsQuery, params);
 
-    // HTMLを直接生成（簡易）
     let html = `
       <html><head><title>AmaLink ホーム</title><link rel="stylesheet" href="/css/style2.css"></head>
       <body><div class="container">
@@ -50,45 +63,39 @@ app.get('/home', async (req, res) => {
     if (req.session.user.role === 'company') {
       if (companies.length > 0) {
         html += `<a href="/job/new" class="button-link">求人登録はこちら</a>`;
+        html += `<a href="/dashboard" class="button-link">企業ダッシュボード</a>`;
       } else {
         html += `<a href="/auth/company" class="button-link">企業登録はこちら</a>`;
       }
     }
 
-    if (req.session.user.role === 'company' && companies.length > 0) {
-      html += `<a href="/dashboard" class="button-link">企業ダッシュボード</a>`;
-    }
-
-    html += `<h2>求人一覧</h2><form method="GET" action="/home">
-              <input type="text" name="q" placeholder="キーワード検索">
-              <button type="submit">検索</button>
-            </form>`;
-
     html += `
+      <h2>求人一覧</h2>
+      <form method="GET" action="/home">
+        <input type="text" name="q" value="${keyword || ''}" placeholder="キーワード検索">
+        <button type="submit">検索</button>
+      </form>
       <div class="job-grid">
     `;
 
     for (const job of jobs) {
       html += `
-        <div class="job-grid">
-          <div class="form-card">
-            <h3><a href="/job/${job.id}">${job.title}</a></h3>
-            <p>${job.description.substring(0, 60)}...</p>
-            <small>${job.location || '勤務地不明'} / ${job.salary || '給与不明'}</small>
-            </div>
+        <div class="form-card">
+          <h3><a href="/job/${job.id}">${job.title}</a></h3>
+          <p>${job.description.substring(0, 60)}...</p>
+          <small>${job.location || '勤務地不明'} / ${job.salary || '給与不明'}</small>
         </div>
       `;
     }
 
-    html += `</div>`;
-
-    html += `</div></body></html>`;
+    html += `</div></div></body></html>`;
     res.send(html);
   } catch (err) {
     console.error(err);
     res.status(500).send('ページ表示に失敗しました');
   }
 });
+
 
 app.get('/dashboard', async (req, res) => {
   if (!req.session.user || req.session.user.role !== 'company') {
