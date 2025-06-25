@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>AmaLink - 企業登録</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="logo">AmaLink</h1>
+      <p class="tagline">企業様向け登録フォーム</p>
+    </header>
+
+    <form action="/auth/company" method="post" class="form-card">
+      <h2>企業アカウント登録</h2>
+
+      <input name="name" placeholder="企業名" required>
+      <input type="email" name="email" placeholder="メールアドレス" required>
+      <input type="password" name="password" placeholder="パスワード" required>
+      <input name="phone" placeholder="電話番号">
+
+      <button type="submit">登録する</button>
+    </form>
+  </div>
+</body>
+</html>

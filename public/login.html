@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>AmaLink - ログイン</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+        <div class="container">
+    <header>
+        <h1 class="logo">AmaLink</h1>
+        <p class="tagline">ログインしてキャリアを広げよう</p>
+    </header>
+
+    <form action="/auth/login" method="post" class="form-card">
+        <h2>ログイン</h2>
+
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <input type="password" name="password" placeholder="パスワード" required>
+
+        <button type="submit">ログイン</button>
+    </form>
+    </div>
+</body>
+</html>

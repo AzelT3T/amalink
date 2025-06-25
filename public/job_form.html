@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>求人登録 - AmaLink</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+    <h1 class="logo">AmaLink</h1>
+    <h2>求人情報登録</h2>
+    <form action="/job/new" method="post" class="form-card">
+        <input name="title" placeholder="職種・タイトル" required>
+        <textarea name="description" placeholder="仕事内容" required></textarea>
+        <input name="location" placeholder="勤務地">
+        <input name="salary" placeholder="給与">
+        <button type="submit">登録する</button>
+    </form>
+    </div>
+</body>
+</html>

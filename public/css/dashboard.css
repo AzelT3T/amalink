@@ -1,0 +1,174 @@
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background: #f3f6f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 28px;
+  color: #004d40;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #00796b;
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 20px;
+  color: #00695c;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+ul li:hover {
+  background: #e0f2f1;
+}
+
+a {
+  color: #00796b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.button-link {
+  display: inline-block;
+  background: #00796b;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+.button-link:hover {
+  background: #004d40;
+}
+
+img.chart {
+  max-width: 100%;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  ul li {
+    font-size: 14px;
+  }
+}
+
+.toggle-button {
+  background: #607d8b;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.toggle-button:hover {
+  background: #455a64;
+}
+
+.edit-link {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #2196f3;
+  text-decoration: underline;
+}
+
+.edit-link:hover {
+  color: #0d47a1;
+}
+
+/* 編集ページの見出し */
+.container h1 {
+  font-size: 28px;
+  color: #00796b;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* フォーム要素 */
+.form-card input[type="text"],
+.form-card input[type="number"],
+.form-card input[type="email"],
+.form-card input[type="password"],
+.form-card textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  border-color: #00796b;
+  outline: none;
+}
+
+/* フォームのボタン（再利用） */
+.form-card button {
+  width: 100%;
+  padding: 12px;
+  background-color: #009688;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-card button:hover {
+  background-color: #00796b;
+}
+
+/* ダッシュボードに戻るリンク */
+.button-link {
+  display: inline-block;
+  margin-top: 20px;
+}

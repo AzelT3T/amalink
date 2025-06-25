@@ -1,15 +1,45 @@
-<form action="/auth/register" method="post">
-  <input name="name" placeholder="名前" required><br>
-  <input type="email" name="email" placeholder="メール" required><br>
-  <input type="password" name="password" placeholder="パスワード" required><br>
-  <input name="phone" placeholder="電話番号"><br>
-  <select name="gender">
-    <option value="">性別</option>
-    <option value="male">男性</option>
-    <option value="female">女性</option>
-    <option value="other">その他</option>
-  </select><br>
-  <input name="age" type="number" placeholder="年齢"><br>
-  <input name="purpose" placeholder="目的 (例: 就職、起業など)"><br>
-  <button type="submit">登録</button>
-</form>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>AmaLink - ユーザー登録</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="logo">AmaLink</h1>
+      <p class="tagline">島でキャリアを、未来にリンク。</p>
+    </header>
+
+    <form action="/auth/register" method="post" class="form-card">
+      <h2>ユーザー登録</h2>
+
+      <input name="name" placeholder="名前" required>
+      <input type="email" name="email" placeholder="メールアドレス" required>
+      <input type="password" name="password" placeholder="パスワード" required>
+      <input name="phone" placeholder="電話番号">
+
+      <select name="gender">
+        <option value="">性別</option>
+        <option value="male">男性</option>
+        <option value="female">女性</option>
+        <option value="other">その他</option>
+      </select>
+
+      <input name="age" type="number" placeholder="年齢">
+      <input name="purpose" placeholder="目的（例：就職、起業など）">
+
+      <!-- 🔽 role選択（必須） -->
+      <select name="role" required>
+        <option value="">登録種別を選択</option>
+        <option value="user">就活者として登録</option>
+        <option value="company">企業として登録</option>
+      </select>
+
+      <button type="submit">登録する</button>
+    </form>
+  </div>
+</body>
+</html>
